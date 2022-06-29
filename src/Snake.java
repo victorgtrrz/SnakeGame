@@ -6,7 +6,6 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 
 import java.awt.Dimension;
 import java.awt.Font;
@@ -52,25 +51,6 @@ public class Snake extends JFrame {
     
     static boolean gameOver = false;
 
-    public static void tableScore(String scoretext) {
-
-        JFrame frame = new JFrame("Score table");
-        frame.setSize(300,300);
-        frame.getContentPane().setBackground(Color.WHITE);
-        
-        String points = scoretext; 
-
-        JTextArea ta = new JTextArea();
-        ta.append(points);
-        ta.setBounds(100, 100, 100, 100);
-        ta.setBackground(Color.WHITE);
-        
-        frame.add(ta);
-        frame.setLayout(null);
-        frame.setVisible(true);
-
-    }
-
     public Snake() {
 
         setTitle("Snake game by Victoret");
@@ -100,7 +80,6 @@ public class Snake extends JFrame {
     }
 
     public static void main(String[] args) throws Exception {
-        tableScore("Score: 0");
         new Snake();
         //System.out.println(KeyEvent.VK_LEFT);
         AudioInputStream Stream = AudioSystem.getAudioInputStream(new File("src/BSO.wav").getAbsoluteFile());
@@ -179,7 +158,7 @@ public class Snake extends JFrame {
 
             if (gameOver) {
                 g.setColor(Color.BLACK);
-                g.setFont(new Font("VT323", Font.PLAIN, 50)); 
+                g.setFont(new Font("VT323 Normal", Font.PLAIN, 50)); 
                 FontMetrics fm = g.getFontMetrics();
                 Rectangle2D rect = fm.getStringBounds("GAME OVER :(", g);
                 g.drawString("GAME OVER :(", (int) (width/2 - rect.getWidth()/2), height/2);
@@ -187,7 +166,7 @@ public class Snake extends JFrame {
             }
 
             g.setColor(Color.WHITE);
-            g.setFont(new Font("VT323", Font.PLAIN, 25)); 
+            g.setFont(new Font("VT323 Normal", Font.PLAIN, 25)); 
             FontMetrics fm = g.getFontMetrics();
             Rectangle2D rect = fm.getStringBounds(points, g);
             g.drawString(points, (int) (width - 130 - rect.getWidth()/2), 450);
